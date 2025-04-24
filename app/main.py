@@ -8,6 +8,8 @@ URL = "https://api.weatherapi.com/v1/current.json?"
 FILTERING = "Paris"
 
 
+def parse_weather_data(weather_data: dict) -> str:
+    try:
         city = weather_data["location"]["name"]
         country = weather_data["location"]["country"]
         local_time = weather_data["location"]["localtime"]
@@ -22,7 +24,9 @@ FILTERING = "Paris"
         return f"Missing data in response: {e}"
 
 
-
+def get_weather() -> None:
+    try:
+        weather_response = requests.get(f"{URL}key={API_KEY}&q={FILTERING}")
         weather_response.raise_for_status()
         weather_data = weather_response.json()
         print(parse_weather_data(weather_data))
