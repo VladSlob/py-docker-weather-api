@@ -22,9 +22,7 @@ FILTERING = "Paris"
         return f"Missing data in response: {e}"
 
 
-def get_weather() -> None:
-    try:
-        weather_response = requests.get(f"{URL}key={API_KEY}&q={FILTERING}")
+
         weather_response.raise_for_status()
         weather_data = weather_response.json()
         print(parse_weather_data(weather_data))
