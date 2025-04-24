@@ -8,8 +8,6 @@ URL = "https://api.weatherapi.com/v1/current.json?"
 FILTERING = "Paris"
 
 
-def parse_weather_data(weather_data: dict) -> str:
-    try:
         city = weather_data["location"]["name"]
         country = weather_data["location"]["country"]
         local_time = weather_data["location"]["localtime"]
